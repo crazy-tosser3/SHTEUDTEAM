@@ -1,0 +1,499 @@
+{
+  "id": "0",
+  "name": "HACKDB",
+  "createdAt": "2026-04-03T21:33:10.545Z",
+  "updatedAt": "2026-04-03T21:34:52.547Z",
+  "databaseType": "postgresql",
+  "tables": [
+    {
+      "id": "1",
+      "name": "Attack_Types",
+      "schema": "",
+      "x": 380,
+      "y": -106.24999999999997,
+      "fields": [
+        {
+          "id": "2",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": true,
+          "nullable": true,
+          "createdAt": 1775242918491
+        },
+        {
+          "id": "3",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775242918491
+        },
+        {
+          "id": "4",
+          "name": "explanation",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775242918491
+        }
+      ],
+      "indexes": [
+        {
+          "id": "5",
+          "name": "pk_Attack_Types_id",
+          "unique": true,
+          "fieldIds": [
+            "2"
+          ],
+          "createdAt": 1775242918491,
+          "isPrimaryKey": true
+        }
+      ],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1775242918491,
+      "order": 5,
+      "diagramId": "5nbkgve4gmch"
+    },
+    {
+      "id": "6",
+      "name": "Solved",
+      "schema": "public",
+      "x": -1055.181967228301,
+      "y": -247.02824120575343,
+      "fields": [
+        {
+          "id": "7",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "primaryKey": true,
+          "unique": true,
+          "nullable": true,
+          "createdAt": 1775235667791
+        },
+        {
+          "id": "8",
+          "name": "user_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775235683012
+        },
+        {
+          "id": "9",
+          "name": "task_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775235712701
+        },
+        {
+          "id": "10",
+          "name": "Answers",
+          "type": {
+            "id": "json",
+            "name": "json"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775235736173
+        },
+        {
+          "id": "11",
+          "name": "is_correct",
+          "type": {
+            "id": "boolean",
+            "name": "boolean"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775242918491
+        }
+      ],
+      "indexes": [
+        {
+          "id": "12",
+          "name": "pk_Solved_id",
+          "unique": true,
+          "fieldIds": [
+            "7"
+          ],
+          "createdAt": 1775242918491,
+          "isPrimaryKey": true
+        }
+      ],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1775235667791,
+      "order": 3,
+      "diagramId": "5nbkgve4gmch"
+    },
+    {
+      "id": "13",
+      "name": "USERS",
+      "schema": "public",
+      "x": -797.5457083124587,
+      "y": -565.5002116927217,
+      "fields": [
+        {
+          "id": "14",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "primaryKey": true,
+          "unique": true,
+          "nullable": true,
+          "createdAt": 1775234638563
+        },
+        {
+          "id": "15",
+          "name": "status",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775234689334
+        },
+        {
+          "id": "16",
+          "name": "Login",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775234705328
+        },
+        {
+          "id": "17",
+          "name": "Gotten Tasks",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775235268003
+        },
+        {
+          "id": "18",
+          "name": "image",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1775252017976
+        }
+      ],
+      "indexes": [
+        {
+          "id": "19",
+          "name": "pk_USERS_id",
+          "unique": true,
+          "fieldIds": [
+            "14"
+          ],
+          "createdAt": 1775242918490,
+          "isPrimaryKey": true
+        }
+      ],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1775234638563,
+      "order": 0,
+      "diagramId": "5nbkgve4gmch"
+    },
+    {
+      "id": "20",
+      "name": "Tasks",
+      "schema": "public",
+      "x": -465.1723157237035,
+      "y": 220.22768164751884,
+      "fields": [
+        {
+          "id": "21",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "primaryKey": true,
+          "unique": true,
+          "nullable": true,
+          "createdAt": 1775234747210
+        },
+        {
+          "id": "22",
+          "name": "title",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775234907782
+        },
+        {
+          "id": "23",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775234918383
+        }
+      ],
+      "indexes": [
+        {
+          "id": "24",
+          "name": "pk_Tasks_id",
+          "unique": true,
+          "fieldIds": [
+            "21"
+          ],
+          "createdAt": 1775242918490,
+          "isPrimaryKey": true
+        }
+      ],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1775234747210,
+      "order": 1,
+      "diagramId": "5nbkgve4gmch"
+    },
+    {
+      "id": "25",
+      "name": "Ataks",
+      "schema": "public",
+      "x": -71.75893938762528,
+      "y": -483.21199941188945,
+      "fields": [
+        {
+          "id": "26",
+          "name": "id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "primaryKey": true,
+          "unique": true,
+          "nullable": true,
+          "createdAt": 1775235182467
+        },
+        {
+          "id": "27",
+          "name": "Questions",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775235197881
+        },
+        {
+          "id": "28",
+          "name": "attack_type_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775242918491
+        }
+      ],
+      "indexes": [
+        {
+          "id": "29",
+          "name": "pk_Ataks_id",
+          "unique": true,
+          "fieldIds": [
+            "26"
+          ],
+          "createdAt": 1775242918491,
+          "isPrimaryKey": true
+        }
+      ],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1775235182467,
+      "order": 2,
+      "diagramId": "5nbkgve4gmch"
+    },
+    {
+      "id": "30",
+      "name": "Ratings",
+      "schema": "",
+      "x": 380,
+      "y": 80,
+      "fields": [
+        {
+          "id": "31",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": true,
+          "nullable": true,
+          "createdAt": 1775242918491
+        },
+        {
+          "id": "32",
+          "name": "user_id",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775242918491
+        },
+        {
+          "id": "33",
+          "name": "score",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775242918491
+        },
+        {
+          "id": "34",
+          "name": "league",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "createdAt": 1775242918491
+        }
+      ],
+      "indexes": [
+        {
+          "id": "35",
+          "name": "pk_Ratings_id",
+          "unique": true,
+          "fieldIds": [
+            "31"
+          ],
+          "createdAt": 1775242918491,
+          "isPrimaryKey": true
+        }
+      ],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1775242918491,
+      "order": 6,
+      "diagramId": "5nbkgve4gmch"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "36",
+      "name": "Ataks_attack_type_id_Attack_Types_id",
+      "sourceTableId": "25",
+      "targetTableId": "1",
+      "sourceFieldId": "28",
+      "targetFieldId": "2",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1775242918492,
+      "diagramId": "5nbkgve4gmch"
+    },
+    {
+      "id": "37",
+      "name": "Ratings_user_id_USERS_id",
+      "sourceTableId": "30",
+      "targetTableId": "13",
+      "sourceFieldId": "32",
+      "targetFieldId": "14",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1775242918492,
+      "diagramId": "5nbkgve4gmch"
+    },
+    {
+      "id": "38",
+      "name": "Solved_task_id_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "6",
+      "targetSchema": "public",
+      "targetTableId": "20",
+      "sourceFieldId": "9",
+      "targetFieldId": "21",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1775235728492,
+      "diagramId": "5nbkgve4gmch"
+    },
+    {
+      "id": "39",
+      "name": "Solved_user_id_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "6",
+      "targetSchema": "public",
+      "targetTableId": "13",
+      "sourceFieldId": "8",
+      "targetFieldId": "14",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1775235706895,
+      "diagramId": "5nbkgve4gmch"
+    }
+  ],
+  "dependencies": [],
+  "areas": [],
+  "customTypes": [],
+  "notes": []
+}

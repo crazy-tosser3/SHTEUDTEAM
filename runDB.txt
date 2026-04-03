@@ -1,0 +1,8 @@
+docker run --name project \
+  -e POSTGRES_PASSWORD=93953 \
+  -e POSTGRES_DB=project \
+  -p 5432:5432 \
+  -d postgres
+
+
+docker exec -it project psql -U postgres -d project
