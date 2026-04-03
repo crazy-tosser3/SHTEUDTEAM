@@ -1,1 +1,4 @@
 go.sum
+uv.lock
+.venv/
+__pycache__
