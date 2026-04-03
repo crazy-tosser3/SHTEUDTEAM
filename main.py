@@ -15,5 +15,13 @@ def update_profile(email: str, password: str, emailNew: str = None, passwordNew:
         }
     }
 
+@app.get("/api/profile/stats")
+def statistic_profile():
+    return {
+        "status" : "status",
+        "gotten_task": "gotten_task",
+        "try": "try"
+    }
+
 app.mount("/", StaticFiles(directory="frontend/out", html=True), name="static")
 
