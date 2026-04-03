@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./buildFrontend
+./buildFrontend.sh
 docker compose up -d
