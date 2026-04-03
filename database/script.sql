@@ -1,10 +1,11 @@
 CREATE SCHEMA IF NOT EXISTS "public";
 
-CREATE TABLE "Attack_Types" (
-    "id" integer,
-    "name" text,
-    "explanation" text,
-    CONSTRAINT "pk_Attack_Types_id" PRIMARY KEY ("id")
+CREATE TABLE "public"."Tasks" (
+    "id" bigint,
+    "title" text,
+    "description" text,
+    "Image" text,
+    CONSTRAINT "pk_Tasks_id" PRIMARY KEY ("id")
 );
 
 CREATE TABLE "public"."Solved" (
@@ -20,16 +21,12 @@ CREATE TABLE "public"."USERS" (
     "id" bigint,
     "status" text,
     "Login" text,
+    "Email" text,
     "Gotten Tasks" integer,
-    "image" text,
+    "Image" text,
+    "try" integer,
+    "password" bigint,
     CONSTRAINT "pk_USERS_id" PRIMARY KEY ("id")
-);
-
-CREATE TABLE "public"."Tasks" (
-    "id" bigint,
-    "title" text,
-    "description" text,
-    CONSTRAINT "pk_Tasks_id" PRIMARY KEY ("id")
 );
 
 CREATE TABLE "public"."Ataks" (
@@ -45,6 +42,13 @@ CREATE TABLE "Ratings" (
     "score" integer,
     "league" text,
     CONSTRAINT "pk_Ratings_id" PRIMARY KEY ("id")
+);
+
+CREATE TABLE "Attack_Types" (
+    "id" integer,
+    "name" text,
+    "explanation" text,
+    CONSTRAINT "pk_Attack_Types_id" PRIMARY KEY ("id")
 );
 
 -- Foreign key constraints
