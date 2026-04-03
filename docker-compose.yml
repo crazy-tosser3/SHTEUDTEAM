@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "93953"
+      POSTGRES_DB: "project"
+
+  python_server:
+    image: python_server
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      - postgres
