@@ -25,7 +25,7 @@ CREATE TABLE "public"."USERS" (
     "Gotten Tasks" integer,
     "Image" text,
     "try" integer,
-    "password" bigint,
+    "password" text,
     CONSTRAINT "pk_USERS_id" PRIMARY KEY ("id")
 );
 
