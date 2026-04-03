@@ -12,6 +12,20 @@ class DBManager:
             port="5432"
         )
 
+    def init_db(self, script_path):
+        try:
+            with open(script_path, 'r', encoding='utf-8') as f:
+                sql_script = f.read()
+            
+            with self.connection.cursor() as cur:
+                cur.execute(sql_script)
+                self.connection.commit()
+        except FileNotFoundError:
+            print(f"файла с скриптом нет")
+        except Exception as e:
+            print(f"ошибка скрипта")
+            self.conn.rollback()
+
     def authenticate(self, email, password):
         query = 'SELECT * FROM "public"."USERS" WHERE "status" = %s AND "password" = %s'
         with self.connection.cursor(cursor_factory=RealDictCursor) as cursor:

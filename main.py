@@ -79,4 +79,9 @@ def submit_report(email: str, password: str, answers: list):
     db.save_report(email, answers)
     return {"status": "saved"}
 
+
+@app.on_event("startup")
+def startup_event():
+    db.init_db("./database/script.sql")
+
 app.mount("/", StaticFiles(directory="frontend/out", html=True), name="static")
