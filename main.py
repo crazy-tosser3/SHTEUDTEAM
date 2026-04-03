@@ -14,7 +14,7 @@ def update_profile(email: str, password: str, emailNew: str = None, passwordNew:
             "password": passwordNew,
             "photo": photoNew
         }
-        )
+    )
 
 @app.get("/api/profile/stats")
 def statistic_profile():
