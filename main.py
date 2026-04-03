@@ -1,19 +1,20 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import Response
 
 app = FastAPI(title="ШТЕУД")
 
 @app.post("/api/profile/edit")
 def update_profile(email: str, password: str, emailNew: str = None, passwordNew: str = None, loginNew: str = None, photoNew: str = None):
-    return {
-        "status": 200,
-        "updated_profile": {
+    return Response(
+        status_code=200,
+        content={
             "login": loginNew,
             "email": emailNew,
             "password": passwordNew,
             "photo": photoNew
         }
-    }
+        )
 
 @app.get("/api/profile/stats")
 def statistic_profile():
