@@ -104,6 +104,12 @@ class DBManager:
             cursor.execute(query, (task_id,))
             return cursor.fetchone()
 
+    def get_user_role(self, user_id):
+        query = 'SELECT * FROM "public"."Tasks" WHERE role = %s'
+        with self.connection.cursor(cursor_factory=RealDictCursor) as cursor:
+            cursor.execute(query, (user_id,))
+            return cursor.fetchone()
+
     def get_attack_details(self, attack_id):
         query = """
             SELECT a."Questions", t.name, t.explanation 

@@ -5,6 +5,7 @@ CREATE TABLE "public"."USERS" (
     "Login" text NOT NULL,
     "Email" text NOT NULL UNIQUE,
     "password" text NOT NULL,
+    "role" text NOT NULL,
     "status" text,
     "Gotten Tasks" integer DEFAULT 0,
     "Image" text,

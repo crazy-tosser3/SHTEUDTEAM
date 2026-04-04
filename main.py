@@ -105,4 +105,4 @@ def submit_report(
 def startup_event():
     db.init_db("./database/script.sql")
 
-app.mount("/", StaticFiles(directory="frontend/out", html=True), name="static")
+# app.mount("/", StaticFiles(directory="frontend/out", html=True), name="static")
