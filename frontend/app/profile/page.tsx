@@ -5,14 +5,14 @@ import { Award, LogOut, Shield } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 
-const page = () => {
+const profile = () => {
   const { data:session } = useSession();
 
   const [curScore, setCurScore] = useState(18);
   const [maxScore, setMaxScore] = useState(24);
 
   return (
-    <div className="m-auto border rounded p-1 flex flex-col items-center gap-2">
+    <div className="m-auto border rounded p-1 flex flex-col items-center gap-2 w-fit">
       <div className="flex items-center gap-2 border rounded-[100dvh]">
         <img src="/placeholder.webp" className="rounded-full h-[128px] aspect-square object-cover pointer-events-none" />
         {<h1 className="text-3xl text-(--accent) p-1 pr-5">{session?.user?.name}</h1>}  
@@ -38,4 +38,4 @@ const page = () => {
   )
 }
 
-export default page
+export default profile

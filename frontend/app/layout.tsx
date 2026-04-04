@@ -5,6 +5,7 @@ import Light from "./components/Light";
 import SessionProv from "./components/SessionProvider";
 import ProfileBtn from "./components/ProfileBtn";
 import Logo from "./components/Logo";
+import PageWrapper from "./components/PageWrapper";
 
 export const metadata: Metadata = {
   title: "Квест по кибербезопасности",
@@ -20,7 +21,7 @@ export default function RootLayout({
     <html
       lang="ru"
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-clip">
         <SessionProv>
           <Light />
           <Modal />
@@ -31,7 +32,9 @@ export default function RootLayout({
               <ProfileBtn />
             </div>
           </header>
-          {children}
+          <PageWrapper>
+            {children}
+          </PageWrapper>
         </SessionProv>
       </body>
     </html>

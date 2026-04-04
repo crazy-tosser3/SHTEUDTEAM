@@ -1,7 +1,7 @@
-import { ChevronRight } from "lucide-react";
 import Card from "./components/Card";
 import TaskCard from "./components/TaskCard";
 import Carousel from "./components/Carousel";
+import StartBtn from "./components/StartBtn";
 
 export default function Home() {
   const data = [
@@ -67,9 +67,7 @@ export default function Home() {
           <h1 className="text-2xl">Готовы проверить свои знания в кибербезопасности?</h1>
           <div className="flex gap-2 items-center">
             <h2>Тогда отправляйтесь в увлекательное путешествие</h2>
-            <button className="flex gap-1 items-center primary text-(--background)">
-              <ChevronRight size={48} />
-            </button>
+            <StartBtn />
           </div>
         </Card>
       </div>
