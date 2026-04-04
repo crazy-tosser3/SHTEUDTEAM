@@ -131,9 +131,9 @@ class DBManager:
 
                 query_solved = """
                     INSERT INTO "public"."Solved" ("user_id", "task_id", "Answers", "is_correct")
-                    VALUES (%s, 1, %s, %s)
+                    VALUES (%s, %s, %s, %s)
                 """
-                cursor.execute(query_solved, (user_id, json.dumps(answers), is_correct))
+                cursor.execute(query_solved, (user_id, module_id, json.dumps(answers), is_correct))
 
                 update_query = """
                     UPDATE "public"."USERS" 
