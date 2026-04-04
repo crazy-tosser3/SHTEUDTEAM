@@ -44,7 +44,7 @@ def get_profile_stats(login: str):
     return {
         "user": {
             "login": stats["Login"],
-            "photo": stats["image"],
+            "photo": stats["Image"],
             "league": stats.get("league") or "Bronze"
         },
         "performance": {
@@ -84,4 +84,5 @@ def submit_report(email: str, password: str, answers: list):
 def startup_event():
     db.init_db("./database/script.sql")
 
-app.mount("/", StaticFiles(directory="frontend/out", html=True), name="static")
+# app.
+# mount("/", StaticFiles(directory="frontend/out", html=True), name="static")

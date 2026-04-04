@@ -21,20 +21,19 @@ class DBManager:
                 cur.execute(sql_script)
                 self.connection.commit()
         except FileNotFoundError:
-            print(f"файла с скриптом нет")
+            print(f"{script_path} не найден")
         except Exception as e:
-            print(f"ошибка скрипта")
             self.connection.rollback()
 
     def register(self, email, password, login):
         with self.connection.cursor() as cursor:
             try:
                 user_query = """
-                    INSERT INTO "public"."USERS" ("status", "Email", "password", "Login", "Gotten Tasks") 
-                    VALUES (%s, %s, %s, %s, 0) 
+                    INSERT INTO "public"."USERS" ("Email", "password", "Login", "Gotten Tasks") 
+                    VALUES (%s, %s, %s, 0) 
                     RETURNING id
                 """
-                cursor.execute(user_query, (email, email, password, login))
+                cursor.execute(user_query, (email, password, login))
                 new_id = cursor.fetchone()[0]
                 
                 rating_query = """
@@ -47,11 +46,10 @@ class DBManager:
                 return new_id
             except Exception as e:
                 self.connection.rollback()
-                print(f"Ошибка при регистрации: {e}")
                 raise e
 
     def authenticate(self, email, password):
-        query = 'SELECT * FROM "public"."USERS" WHERE "status" = %s AND "password" = %s'
+        query = 'SELECT * FROM "public"."USERS" WHERE "Email" = %s AND "password" = %s'
         with self.connection.cursor(cursor_factory=RealDictCursor) as cursor:
             cursor.execute(query, (email, password))
             return cursor.fetchone()
@@ -61,10 +59,10 @@ class DBManager:
             UPDATE "public"."USERS" 
             SET 
                 "Login" = COALESCE(%s, "Login"), 
-                "image" = COALESCE(%s, "image"),
-                "status" = COALESCE(%s, "status"),
+                "Image" = COALESCE(%s, "Image"),
+                "Email" = COALESCE(%s, "Email"),
                 "password" = COALESCE(%s, "password")
-            WHERE "status" = %s
+            WHERE "Email" = %s
         """
         with self.connection.cursor() as cursor:
             cursor.execute(query, (login, photo, email, password, current_email))
@@ -73,7 +71,7 @@ class DBManager:
     def get_user_stats(self, login):
         query = """
             SELECT 
-                u."id", u."Login", u."Gotten Tasks", u."image",
+                u."id", u."Login", u."Gotten Tasks", u."Image",
                 r.score, r.league,
                 COUNT(s.id) as total_tries,
                 COUNT(CASE WHEN s.is_correct = TRUE THEN 1 END) as success_tries
@@ -121,23 +119,23 @@ class DBManager:
         is_correct = all(answers) if isinstance(answers, list) else False
         
         with self.connection.cursor() as cursor:
-            cursor.execute('SELECT id FROM "public"."USERS" WHERE "status" = %s', (email,))
-            user_row = cursor.fetchone()
-            
-            if not user_row:
-                return None
+            try:
+                cursor.execute('SELECT id FROM "public"."USERS" WHERE "status" = %s', (email,))
+                user_row = cursor.fetchone()
                 
-            user_id = user_row[0]
+                if not user_row:
+                    return None
+                    
+                user_id = user_row[0]
 
-            cursor.execute('SELECT COALESCE(MAX(id), 0) + 1 FROM "public"."Solved"')
-            solved_id = cursor.fetchone()[0]
-
-            query = """
-                INSERT INTO "public"."Solved" ("id", "user_id", "task_id", "Answers", "is_correct")
-                VALUES (%s, %s, 1, %s, %s)
-            """
-            cursor.execute(query, (solved_id, user_id, json.dumps(answers), is_correct))
-            self.connection.commit()
+                query = """
+                    INSERT INTO "public"."Solved" ("user_id", "task_id", "Answers", "is_correct")
+                    VALUES (%s, 1, %s, %s)
+                """
+                cursor.execute(query, (user_id, json.dumps(answers), is_correct))
+                self.connection.commit()
+            except Exception as e:
+                self.connection.rollback()
 
     def close(self):
         if self.connection:
