@@ -8,7 +8,7 @@ class DBManager:
             dbname="project",
             user="postgres",
             password="93953",
-            host="localhost",
+            host="194.34.239.226",
             port="5432"
         )
 
@@ -141,6 +141,19 @@ class DBManager:
                     WHERE "id" = %s
                 """
                 cursor.execute(update_query, (user_id,))
+
+                cursor.execute("""UPDATE "Ratings" 
+                SET "league" = CASE 
+                    WHEN score >= 2001 THEN 'Чемпион'
+                    WHEN score >= 1600 THEN 'Легенда'
+                    WHEN score >= 1200 THEN 'Мастер'
+                    WHEN score >= 800  THEN 'Алмаз'
+                    WHEN score >= 500  THEN 'Платина'
+                    WHEN score >= 250  THEN 'Золото'
+                    WHEN score >= 100  THEN 'Серебро'
+                    ELSE 'Бронза'
+                END
+                WHERE "user_id" = %s""", (user_id,))
                 
                 self.connection.commit()
                 return True
