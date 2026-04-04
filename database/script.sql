@@ -16,8 +16,16 @@ CREATE TABLE "public"."Tasks" (
     "id" BIGSERIAL,
     "title" text NOT NULL,
     "description" text,
+    "questions_count" BIGINT,
     "Image" text,
     CONSTRAINT "pk_Tasks_id" PRIMARY KEY ("id")
+);
+
+CREATE TABLE "public"."Attack_Types" (
+    "id" SERIAL,
+    "name" text NOT NULL,
+    "explanation" text,
+    CONSTRAINT "pk_Attack_Types_id" PRIMARY KEY ("id")
 );
 
 CREATE TABLE "public"."Ataks" (
@@ -36,14 +44,7 @@ CREATE TABLE "public"."Solved" (
     CONSTRAINT "pk_Solved_id" PRIMARY KEY ("id")
 );
 
-CREATE TABLE "Attack_Types" (
-    "id" SERIAL,
-    "name" text NOT NULL,
-    "explanation" text,
-    CONSTRAINT "pk_Attack_Types_id" PRIMARY KEY ("id")
-);
-
-CREATE TABLE "Ratings" (
+CREATE TABLE "public"."Ratings" (
     "id" SERIAL,
     "user_id" bigint UNIQUE,
     "score" integer DEFAULT 0,
@@ -51,9 +52,19 @@ CREATE TABLE "Ratings" (
     CONSTRAINT "pk_Ratings_id" PRIMARY KEY ("id")
 );
 
--- Foreign key constraints
--- Schema: public
-ALTER TABLE "Attack_Types" ADD CONSTRAINT "fk_Attack_Types_id_Ataks_attack_type_id" FOREIGN KEY("id") REFERENCES "public"."Ataks"("attack_type_id");
-ALTER TABLE "Ratings" ADD CONSTRAINT "fk_Ratings_user_id_USERS_id" FOREIGN KEY("user_id") REFERENCES "public"."USERS"("id");
-ALTER TABLE "public"."Tasks" ADD CONSTRAINT "fk_Tasks_id_Solved_task_id" FOREIGN KEY("id") REFERENCES "public"."Solved"("task_id");
-ALTER TABLE "public"."USERS" ADD CONSTRAINT "fk_USERS_id_Solved_user_id" FOREIGN KEY("id") REFERENCES "public"."Solved"("user_id");
+-- Исправленные внешние ключи (Дочерняя -> Родительская)
+ALTER TABLE "public"."Ataks" 
+    ADD CONSTRAINT "fk_Ataks_attack_type_id" 
+    FOREIGN KEY ("attack_type_id") REFERENCES "public"."Attack_Types" ("id");
+
+ALTER TABLE "public"."Solved" 
+    ADD CONSTRAINT "fk_Solved_user_id" 
+    FOREIGN KEY ("user_id") REFERENCES "public"."USERS" ("id");
+
+ALTER TABLE "public"."Solved" 
+    ADD CONSTRAINT "fk_Solved_task_id" 
+    FOREIGN KEY ("task_id") REFERENCES "public"."Tasks" ("id");
+
+ALTER TABLE "public"."Ratings" 
+    ADD CONSTRAINT "fk_Ratings_user_id" 
+    FOREIGN KEY ("user_id") REFERENCES "public"."USERS" ("id");
