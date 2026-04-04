@@ -23,9 +23,6 @@
   --accent-lightest: oklch(75.708% 0.17844 142.352);
   --text: oklch(94.928% 0.01888 309.592);
 
-  --success: oklch(52.543% 0.10158 172.326);
-  --error: oklch(37.527% 0.15 13.88);
-
   --spacing: 15px;
   --radius: 15px;
 }
@@ -62,6 +59,7 @@ button, input[type="submit"]{
   font-weight: 700;
   padding: var(--spacing);
   outline: solid 1px var(--accent-lightest);
+  will-change: transform;
 }
 
 button:hover, input[type="submit"]:hover, .btn:hover{
@@ -118,18 +116,6 @@ button.ghost-btn{
 
 .accent-gradient{
   background-image: linear-gradient(35deg, var(--accent), var(--accent-lightest));
-}
-
-.success{
-  background-color: var(--success);
-}
-
-.info{
-  background-color: var(--accent-light);
-}
-
-.error{
-  background-color: var(--error);
 }
 
 .layer{
@@ -213,7 +199,7 @@ input[type="search"]::-ms-reveal {
 }
 
 *:focus{
-  outline: unset;
+  outline: solid 1px var(--accent);
 }
 
 *::selection{
