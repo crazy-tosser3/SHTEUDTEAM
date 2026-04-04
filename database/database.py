@@ -24,31 +24,37 @@ class DBManager:
             print(f"файла с скриптом нет")
         except Exception as e:
             print(f"ошибка скрипта")
-            self.conn.rollback()
+            self.connection.rollback()
+
+    def register(self, email, password, login):
+        with self.connection.cursor() as cursor:
+            try:
+                user_query = """
+                    INSERT INTO "public"."USERS" ("status", "Email", "password", "Login", "Gotten Tasks") 
+                    VALUES (%s, %s, %s, %s, 0) 
+                    RETURNING id
+                """
+                cursor.execute(user_query, (email, email, password, login))
+                new_id = cursor.fetchone()[0]
+                
+                rating_query = """
+                    INSERT INTO "Ratings" ("user_id", "score", "league") 
+                    VALUES (%s, 0, %s)
+                """
+                cursor.execute(rating_query, (new_id, "Bronze"))
+                
+                self.connection.commit()
+                return new_id
+            except Exception as e:
+                self.connection.rollback()
+                print(f"Ошибка при регистрации: {e}")
+                raise e
 
     def authenticate(self, email, password):
         query = 'SELECT * FROM "public"."USERS" WHERE "status" = %s AND "password" = %s'
         with self.connection.cursor(cursor_factory=RealDictCursor) as cursor:
             cursor.execute(query, (email, password))
             return cursor.fetchone()
-
-    def register(self, email, password, login):
-        with self.connection.cursor() as cursor:
-            cursor.execute('SELECT COALESCE(MAX(id), 0) + 1 FROM "public"."USERS"')
-            new_id = cursor.fetchone()[0]
-            
-            user_query = """
-                INSERT INTO "public"."USERS" ("id", "status", "password", "Login", "Gotten Tasks") 
-                VALUES (%s, %s, %s, %s, 0) 
-                RETURNING id
-            """
-            cursor.execute(user_query, (new_id, email, password, login))
-            
-            rating_query = 'INSERT INTO "Ratings" ("id", "user_id", "score", "league") VALUES (%s, %s, 0, %s)'
-            cursor.execute(rating_query, (new_id, new_id, "Bronze"))
-            
-            self.connection.commit()
-            return new_id
 
     def update_user(self, current_email, login, photo, email, password):
         query = """
