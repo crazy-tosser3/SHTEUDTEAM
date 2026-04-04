@@ -1,0 +1,584 @@
+{
+  "id": "0",
+  "name": "DOD",
+  "createdAt": "2026-04-03T16:43:40.482Z",
+  "updatedAt": "2026-04-03T23:50:00.600Z",
+  "databaseType": "postgresql",
+  "tables": [
+    {
+      "id": "1",
+      "name": "USERS",
+      "x": -895.0403912675497,
+      "y": -668.6837849135161,
+      "fields": [
+        {
+          "id": "2",
+          "name": "id",
+          "type": {
+            "name": "bigint",
+            "id": "bigint",
+            "usageLevel": 2
+          },
+          "nullable": false,
+          "primaryKey": true,
+          "unique": true,
+          "createdAt": 1775234638563,
+          "increment": true
+        },
+        {
+          "id": "3",
+          "name": "Login",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": false,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775234705328
+        },
+        {
+          "id": "4",
+          "name": "Email",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": false,
+          "primaryKey": false,
+          "unique": true,
+          "createdAt": 1775234716559
+        },
+        {
+          "id": "5",
+          "name": "password",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": false,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775260005573
+        },
+        {
+          "id": "6",
+          "name": "status",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775234689334
+        },
+        {
+          "id": "7",
+          "name": "Gotten Tasks",
+          "type": {
+            "name": "integer",
+            "id": "integer",
+            "usageLevel": 1
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775235268003,
+          "default": "0"
+        },
+        {
+          "id": "8",
+          "name": "Image",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775246515197
+        },
+        {
+          "id": "9",
+          "name": "try",
+          "type": {
+            "name": "integer",
+            "id": "integer",
+            "usageLevel": 1
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775248091306,
+          "default": "0"
+        }
+      ],
+      "indexes": [
+        {
+          "id": "10",
+          "name": "pk_USERS_id",
+          "fieldIds": [
+            "2"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1775242918490
+        }
+      ],
+      "color": "#8eb7ff",
+      "createdAt": 1775234638563,
+      "isView": false,
+      "order": 0,
+      "schema": "public",
+      "diagramId": "5nbkgve4w3j8"
+    },
+    {
+      "id": "11",
+      "name": "Tasks",
+      "x": -742.7304974816751,
+      "y": 176.19200858014835,
+      "fields": [
+        {
+          "id": "12",
+          "name": "id",
+          "type": {
+            "name": "bigint",
+            "id": "bigint",
+            "usageLevel": 2
+          },
+          "nullable": false,
+          "primaryKey": true,
+          "unique": true,
+          "createdAt": 1775234747210,
+          "increment": true
+        },
+        {
+          "id": "13",
+          "name": "title",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": false,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775234907782
+        },
+        {
+          "id": "14",
+          "name": "description",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775234918383
+        },
+        {
+          "id": "15",
+          "name": "Image",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775245851606
+        }
+      ],
+      "indexes": [
+        {
+          "id": "16",
+          "name": "pk_Tasks_id",
+          "fieldIds": [
+            "12"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1775242918490
+        }
+      ],
+      "color": "#8eb7ff",
+      "createdAt": 1775234747210,
+      "isView": false,
+      "order": 1,
+      "schema": "public",
+      "diagramId": "5nbkgve4w3j8"
+    },
+    {
+      "id": "17",
+      "name": "Ataks",
+      "x": -777.8491054137838,
+      "y": -246.94363204208386,
+      "fields": [
+        {
+          "id": "18",
+          "name": "id",
+          "type": {
+            "name": "bigint",
+            "id": "bigint",
+            "usageLevel": 2
+          },
+          "nullable": false,
+          "primaryKey": true,
+          "unique": true,
+          "createdAt": 1775235182467,
+          "increment": true
+        },
+        {
+          "id": "19",
+          "name": "Questions",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": false,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775235197881
+        },
+        {
+          "id": "20",
+          "name": "attack_type_id",
+          "type": {
+            "name": "integer",
+            "id": "integer",
+            "usageLevel": 1
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775242918491
+        }
+      ],
+      "indexes": [
+        {
+          "id": "21",
+          "name": "pk_Ataks_id",
+          "fieldIds": [
+            "18"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1775242918491
+        }
+      ],
+      "color": "#8eb7ff",
+      "createdAt": 1775235182467,
+      "isView": false,
+      "order": 2,
+      "schema": "public",
+      "diagramId": "5nbkgve4w3j8"
+    },
+    {
+      "id": "22",
+      "name": "Solved",
+      "x": -1240,
+      "y": -240,
+      "fields": [
+        {
+          "id": "23",
+          "name": "id",
+          "type": {
+            "name": "bigint",
+            "id": "bigint",
+            "usageLevel": 2
+          },
+          "nullable": false,
+          "primaryKey": true,
+          "unique": true,
+          "createdAt": 1775235667791,
+          "increment": true
+        },
+        {
+          "id": "24",
+          "name": "user_id",
+          "type": {
+            "name": "bigint",
+            "id": "bigint",
+            "usageLevel": 2
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775235683012
+        },
+        {
+          "id": "25",
+          "name": "task_id",
+          "type": {
+            "name": "bigint",
+            "id": "bigint",
+            "usageLevel": 2
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775235712701
+        },
+        {
+          "id": "26",
+          "name": "Answers",
+          "type": {
+            "name": "json",
+            "id": "json",
+            "usageLevel": 2
+          },
+          "nullable": false,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775235736173
+        },
+        {
+          "id": "27",
+          "name": "is_correct",
+          "type": {
+            "name": "boolean",
+            "id": "boolean",
+            "usageLevel": 1
+          },
+          "nullable": false,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775242918491
+        }
+      ],
+      "indexes": [
+        {
+          "id": "28",
+          "name": "pk_Solved_id",
+          "fieldIds": [
+            "23"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1775242918491
+        }
+      ],
+      "color": "#8eb7ff",
+      "createdAt": 1775235667791,
+      "isView": false,
+      "order": 3,
+      "schema": "public",
+      "diagramId": "5nbkgve4w3j8"
+    },
+    {
+      "id": "29",
+      "name": "Attack_Types",
+      "schema": "",
+      "order": 5,
+      "fields": [
+        {
+          "id": "30",
+          "name": "id",
+          "type": {
+            "name": "integer",
+            "id": "integer",
+            "usageLevel": 1
+          },
+          "nullable": false,
+          "primaryKey": true,
+          "unique": true,
+          "createdAt": 1775242918491,
+          "increment": true
+        },
+        {
+          "id": "31",
+          "name": "name",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": false,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775242918491
+        },
+        {
+          "id": "32",
+          "name": "explanation",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775242918491
+        }
+      ],
+      "indexes": [
+        {
+          "id": "33",
+          "name": "pk_Attack_Types_id",
+          "fieldIds": [
+            "30"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1775242918491
+        }
+      ],
+      "x": -406.9143387222748,
+      "y": -314.9359210097707,
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1775242918491,
+      "diagramId": "5nbkgve4w3j8"
+    },
+    {
+      "id": "34",
+      "name": "Ratings",
+      "schema": "",
+      "order": 6,
+      "fields": [
+        {
+          "id": "35",
+          "name": "id",
+          "type": {
+            "name": "integer",
+            "id": "integer",
+            "usageLevel": 1
+          },
+          "nullable": false,
+          "primaryKey": true,
+          "unique": true,
+          "createdAt": 1775242918491,
+          "increment": true
+        },
+        {
+          "id": "36",
+          "name": "user_id",
+          "type": {
+            "name": "bigint",
+            "id": "bigint",
+            "usageLevel": 2
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": true,
+          "createdAt": 1775242918491
+        },
+        {
+          "id": "37",
+          "name": "score",
+          "type": {
+            "name": "integer",
+            "id": "integer",
+            "usageLevel": 1
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775242918491,
+          "default": "0"
+        },
+        {
+          "id": "38",
+          "name": "league",
+          "type": {
+            "name": "text",
+            "id": "text",
+            "usageLevel": 1
+          },
+          "nullable": true,
+          "primaryKey": false,
+          "unique": false,
+          "createdAt": 1775242918491,
+          "default": "Bronze"
+        }
+      ],
+      "indexes": [
+        {
+          "id": "39",
+          "name": "pk_Ratings_id",
+          "fieldIds": [
+            "35"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1775242918491
+        }
+      ],
+      "x": -313.89545439492906,
+      "y": -559.1844666445596,
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1775242918491,
+      "diagramId": "5nbkgve4w3j8"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "40",
+      "name": "Ataks_attack_type_id_Attack_Types_id",
+      "sourceTableId": "17",
+      "targetTableId": "29",
+      "sourceFieldId": "20",
+      "targetFieldId": "30",
+      "sourceCardinality": "one",
+      "targetCardinality": "many",
+      "createdAt": 1775242918492,
+      "diagramId": "5nbkgve4w3j8"
+    },
+    {
+      "id": "41",
+      "name": "Ratings_user_id_USERS_id",
+      "sourceTableId": "34",
+      "targetTableId": "1",
+      "sourceFieldId": "36",
+      "targetFieldId": "2",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1775242918492,
+      "diagramId": "5nbkgve4w3j8"
+    },
+    {
+      "id": "42",
+      "name": "Solved_task_id_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "22",
+      "targetSchema": "public",
+      "targetTableId": "11",
+      "sourceFieldId": "25",
+      "targetFieldId": "12",
+      "sourceCardinality": "one",
+      "targetCardinality": "many",
+      "createdAt": 1775235728492,
+      "diagramId": "5nbkgve4w3j8"
+    },
+    {
+      "id": "43",
+      "name": "Solved_user_id_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "22",
+      "targetSchema": "public",
+      "targetTableId": "1",
+      "sourceFieldId": "24",
+      "targetFieldId": "2",
+      "sourceCardinality": "one",
+      "targetCardinality": "many",
+      "createdAt": 1775235706895,
+      "diagramId": "5nbkgve4w3j8"
+    }
+  ],
+  "dependencies": [],
+  "areas": [],
+  "customTypes": [],
+  "notes": []
+}

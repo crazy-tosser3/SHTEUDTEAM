@@ -116,26 +116,67 @@ class DBManager:
             return cursor.fetchone()
 
     def save_report(self, email, answers):
-        is_correct = all(answers) if isinstance(answers, list) else False
+        is_correct = all(answers) if isinstance(answers, list) and len(answers) > 0 else False
         
         with self.connection.cursor() as cursor:
             try:
-                cursor.execute('SELECT id FROM "public"."USERS" WHERE "status" = %s', (email,))
+                cursor.execute('SELECT id FROM "public"."USERS" WHERE "Email" = %s', (email,))
                 user_row = cursor.fetchone()
                 
                 if not user_row:
+                    print(f"Пользователь с Email {email} не найден")
                     return None
                     
                 user_id = user_row[0]
 
-                query = """
+                query_solved = """
                     INSERT INTO "public"."Solved" ("user_id", "task_id", "Answers", "is_correct")
                     VALUES (%s, 1, %s, %s)
                 """
-                cursor.execute(query, (user_id, json.dumps(answers), is_correct))
+                cursor.execute(query_solved, (user_id, json.dumps(answers), is_correct))
+
+                update_query = """
+                    UPDATE "public"."USERS" 
+                    SET "Gotten Tasks" = COALESCE("Gotten Tasks", 0) + 1 
+                    WHERE "id" = %s
+                """
+                cursor.execute(update_query, (user_id,))
+                
                 self.connection.commit()
+                return True
             except Exception as e:
                 self.connection.rollback()
+                print(f"Ошибка сохранения отчета: {e}")
+                raise e
+
+    def add_task(self, title, description, image=None):
+        query = """
+            INSERT INTO "public"."Tasks" ("title", "description", "Image") 
+            VALUES (%s, %s, %s) 
+            RETURNING id
+        """
+        try:
+            with self.connection.cursor() as cursor:
+                cursor.execute(query, (title, description, image))
+                new_id = cursor.fetchone()[0]
+                self.connection.commit()
+                return new_id
+        except Exception as e:
+            self.connection.rollback()
+            print(f"Ошибка при добавлении модуля: {e}")
+            return None
+
+    def delete_task(self, task_id):
+        query = 'DELETE FROM "public"."Tasks" WHERE "id" = %s'
+        try:
+            with self.connection.cursor() as cursor:
+                cursor.execute(query, (task_id,))
+                self.connection.commit()
+                return cursor.rowcount > 0 
+        except Exception as e:
+            self.connection.rollback()
+            print(f"Ошибка при удалении модуля: {e}")
+            return False
 
     def close(self):
         if self.connection:

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, status, Body 
 from fastapi.staticfiles import StaticFiles
 from database.database import db
 
@@ -70,8 +70,28 @@ def get_module(module_id: int):
     
     return module
 
+@app.post("/api/moduleadd")
+def add_module(title: str, description: str, image: str = None):
+    task_id = db.add_task(title, description, image)
+    if not task_id:
+        raise HTTPException(status_code=500, detail="Failed to add module")
+    
+    return {"status": "success", "module_id": task_id}
+
+@app.post("/api/moduledel")
+def del_module(module_id: int):
+    success = db.delete_task(module_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Module not found or already deleted")
+    
+    return {"status": "deleted", "module_id": module_id}
+
 @app.post("/api/report")
-def submit_report(email: str, password: str, answers: list):
+def submit_report(
+    email: str, 
+    password: str, 
+    answers: list = Body(...) 
+):
     user = db.authenticate(email, password)
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
