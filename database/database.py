@@ -115,7 +115,7 @@ class DBManager:
             cursor.execute(query, (attack_id,))
             return cursor.fetchone()
 
-    def save_report(self, email, answers):
+    def save_report(self, email, module_id, answers):
         is_correct = all(answers) if isinstance(answers, list) and len(answers) > 0 else False
         
         with self.connection.cursor() as cursor:

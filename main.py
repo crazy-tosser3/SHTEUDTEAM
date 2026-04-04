@@ -86,17 +86,18 @@ def del_module(module_id: int):
     
     return {"status": "deleted", "module_id": module_id}
 
-@app.post("/api/report")
+@app.post("/api/report/{module_id}")
 def submit_report(
     email: str, 
     password: str, 
+    module_id: int,
     answers: list = Body(...) 
 ):
     user = db.authenticate(email, password)
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
     
-    db.save_report(email, answers)
+    db.save_report(email, module_id, answers)
     return {"status": "saved"}
 
 
