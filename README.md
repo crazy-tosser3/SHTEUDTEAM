@@ -19,7 +19,7 @@
 - `psycopg2`
 
 #### Демо
-Демо сервиса доступно по адресу: https://194.34.239.226
+Демо сервиса доступно по адресу: https://IP_сервера
 
 СРЕДА ЗАПУСКА
 ------------
@@ -45,16 +45,16 @@ cd SHTEUDTEAM/
 ```
 server {
     listen 80;
-    server_name 194.34.239.226;
+    server_name IP_сервера;
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl;
-    server_name 194.34.239.226;
+    server_name IP_сервера;
 
-    ssl_certificate /root/.acme.sh/194.34.239.226_ecc/fullchain.cer;
-    ssl_certificate_key /root/.acme.sh/194.34.239.226_ecc/194.34.239.226.key;
+    ssl_certificate /root/.acme.sh/IP_сервера_ecc/fullchain.cer;
+    ssl_certificate_key /root/.acme.sh/IP_сервера_ecc/IP_сервера.key;
     ssl_protocols TLSv1.2 TLSv1.3;
 
     location / {

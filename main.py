@@ -1,8 +1,10 @@
 from fastapi import FastAPI, HTTPException, status, Body 
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from pathlib import Path
 from database.database import db
 
-app = FastAPI(title="ШТЕУД")
+app = FastAPI(title="ШТЕУД", docs_url="/api/docs",openapi_url="/api/openapi.json")
 
 # ==== USERS ====
 
@@ -105,4 +107,13 @@ def submit_report(
 def startup_event():
     db.init_db("./database/script.sql")
 
-app.mount("/", StaticFiles(directory="frontend/out", html=True), name="static")
+# class SpaStaticFiles(StaticFiles):
+#     async def get_response(self, path: str, scope):
+#         try:
+#             return await super().get_response(path, scope)
+#         except HTTPException as ex:
+#             if ex.status_code == 404:
+#                 return FileResponse(Path(self.directory) / "index.html")
+#             raise
+
+# app.mount("/", SpaStaticFiles(directory="frontend/out", html=True), name="static")
