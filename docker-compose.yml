@@ -9,7 +9,6 @@ services:
     build: .
     volumes:
       - .:/app
-    command: npm run dev
     ports:
       - "127.0.0.1:8000:3000"
     depends_on:
