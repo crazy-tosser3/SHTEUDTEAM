@@ -9,5 +9,7 @@ services:
     build: .
     ports:
       - "127.0.0.1:8000:8000"
+    volumes:
+      - ./frontend/out:/app/frontend/out:ro 
     depends_on:
       - postgres
