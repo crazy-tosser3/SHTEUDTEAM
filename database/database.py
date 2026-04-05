@@ -8,7 +8,7 @@ class DBManager:
             dbname="project",
             user="postgres",
             password="93953",
-            host="194.34.239.226",
+            host="postgres",
             port="5432"
         )
 
