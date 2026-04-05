@@ -9,7 +9,7 @@ const page = () => {
   const login = useAuthStore((state:any) => state.login);
   const router = useRouter();
 
-  const handleSubmit = (e:SubmitEvent) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault();
     const form = formRef.current;
     if (!form) return;
