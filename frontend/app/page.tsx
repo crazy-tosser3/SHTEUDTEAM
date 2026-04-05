@@ -4,6 +4,7 @@ import Carousel from "./components/Carousel";
 import StartBtn from "./components/StartBtn";
 
 export default function Home() {
+
   const data = [
     {
       src: "/placeholder.webp",
@@ -51,7 +52,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex gap-2 p-1 h-[85dvh] min-h-full">
+    <main className="flex gap-2 p-1 h-[85dvh]">
       <Card classes="flex-1 h-full" contentClasses="flex flex-col gap-1 overflow-y-scroll overflow-x-hidden">
         <h1 className="text-3xl p-1 mr-1 border rounded">ИНВЕСТИРУЕМ В ВАШУ БЕЗОПАСНОСТЬ</h1>
         <h2 className="text-xl mr-1 text-center">Что мы разберем?</h2>

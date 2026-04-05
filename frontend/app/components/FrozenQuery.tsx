@@ -1,9 +1,9 @@
 'use client'
 
-import { useContext, useRef } from "react"
+import { useContext, useRef, ReactNode } from "react"
 import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime"
 
-export function FrozenRoute({ children }: { children: React.ReactNode }) {
+export function FrozenQuery({ children }: { children: ReactNode }) {
   const context = useContext(LayoutRouterContext)
   const frozen = useRef(context).current
 

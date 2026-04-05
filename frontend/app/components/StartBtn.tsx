@@ -5,7 +5,7 @@ import Link from "next/link"
 
 const StartBtn = () => {
   return (
-    <Link href="/tasks/1">
+    <Link href="/tasks?id=1">
       <button className="flex gap-1 items-center primary text-(--background)">
         <ChevronRight size={48} />
       </button>

@@ -2,20 +2,22 @@
 
 import { motion } from "framer-motion";
 import { Award, LogOut, Shield } from "lucide-react";
-import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
+import { useAuthStore } from "../stores/AuthStore";
 
 const profile = () => {
-  const { data:session } = useSession();
 
   const [curScore, setCurScore] = useState(18);
   const [maxScore, setMaxScore] = useState(24);
+
+  const logOut = useAuthStore((state:any) => state.logout);
+  const email = useAuthStore((state:any) => state.email);
 
   return (
     <div className="m-auto border rounded p-1 flex flex-col items-center gap-2 w-fit">
       <div className="flex items-center gap-2 border rounded-[100dvh]">
         <img src="/placeholder.webp" className="rounded-full h-[128px] aspect-square object-cover pointer-events-none" />
-        {<h1 className="text-3xl text-(--accent) p-1 pr-5">{session?.user?.name}</h1>}  
+        {<h1 className="text-3xl text-(--accent) p-1 pr-5">{email}</h1>}  
       </div>
       <h3 className="ghost">статус:</h3>
       <Shield className="m-auto text-(--accent) highlight" size={128} absoluteStrokeWidth={true} />
@@ -29,7 +31,7 @@ const profile = () => {
           <h2>сертификат</h2>
           <Award />
         </button>
-        <button className="flex items-center gap-2" onClick={() => signOut()}>
+        <button className="flex items-center gap-2" onClick={logOut}>
           <h2>выйти</h2>
           <LogOut />
         </button>
