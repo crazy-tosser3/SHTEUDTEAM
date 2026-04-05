@@ -5,11 +5,12 @@ services:
       POSTGRES_PASSWORD: "93953"
       POSTGRES_DB: "project"
 
-  python_server:
+  frontend:
     build: .
-    ports:
-      - "127.0.0.1:8000:8000"
     volumes:
-      - ./frontend/out:/app/frontend/out:ro 
+      - .:/app
+    command: npm run dev
+    ports:
+      - "3000:3000"
     depends_on:
       - postgres

@@ -1,15 +1,6 @@
-FROM python:3.14-slim
-# FROM python:3.11-slim
+FROM debian:latest
 
-WORKDIR /app
+RUN apt update && apt install -y nodejs npm python3-pip
 
-ENV PYTHONUNBUFFERED=1
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-EXPOSE 8000
-
-CMD ["fastapi", "run"]
+WORKDIR /app/frontend
+CMD ["sh", "-c", "npm i && npm run dev"]
