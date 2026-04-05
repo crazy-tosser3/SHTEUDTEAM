@@ -35,6 +35,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install docker.io
 git clone https://github.com/crazy-tosser3/SHTEUDTEAM
+git checkout f3e6d8722f90bcb4932b0ee20b39ae10eb63b30e
 cd SHTEUDTEAM/
 ```
 
