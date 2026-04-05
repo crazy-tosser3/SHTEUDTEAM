@@ -5,6 +5,7 @@ import Light from "./components/Light";
 import ProfileBtn from "./components/ProfileBtn";
 import Logo from "./components/Logo";
 import { AuthGuard } from "./components/AuthCheck";
+import ThemeSwitch from "./components/ThemeSwitch";
 
 export const metadata: Metadata = {
   title: "Квест по кибербезопасности",
@@ -27,6 +28,7 @@ export default function RootLayout({
           <Logo />
           <div className="flex gap-2 items-center">
             <h1 className="p-1 border rounded">Кибербезопасный квест</h1>
+            <ThemeSwitch />
             <ProfileBtn />
           </div>
         </header>

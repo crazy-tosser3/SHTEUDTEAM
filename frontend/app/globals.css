@@ -27,6 +27,14 @@
   --radius: 15px;
 }
 
+:root[data-theme="light"]{
+  --background: oklch(95.491% 0.00091 275.428);
+  --foreground: oklch(93.134% 0.00091 275.691);
+  --foreground-top: oklch(91.604% 0.00031 275.104);
+  --top: oklch(20.509% 0.00081 274.501);
+  --text: oklch(24.928% 0.01888 309.592);
+}
+
 #root{
   width: 100%;
   height: fit-content;
@@ -42,6 +50,8 @@ body{
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.05rem;
 }
+
+
 
 button, input[type="submit"], .btn{
   border-radius: var(--radius);
