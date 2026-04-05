@@ -2,16 +2,20 @@
 
 import { useRef } from "react";
 import { useAuthStore } from "../stores/AuthStore";
+import { useRouter } from "next/navigation";
 
 const page = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const login = useAuthStore((state:any) => state.login);
+  const router = useRouter();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e:SubmitEvent) => {
+    e.preventDefault();
     const form = formRef.current;
     if (!form) return;
 
     login(form.email.value, form.password.value);
+    router.replace("/")
   }
 
   return (
