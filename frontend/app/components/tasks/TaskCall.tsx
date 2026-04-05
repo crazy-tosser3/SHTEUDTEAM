@@ -28,7 +28,7 @@ const TaskCall = () => {
   return (
     <div className="flex gap-2 items-center h-full">
       <div className="flex-1 grid grid-rows-4 items-center justify-center h-full w-1/3 rounded m-auto bg-(--background) p-1">
-        <h1 className="w-full text-center">Служба банка</h1>
+        <h1 className="w-full text-center">Служба безопасности банка</h1>
         <div className="accent-gradient aspect-square highlight btn w-1/2 m-auto" onClick={handleRepeat} />
         <h1 className="ghost">Нажмите для прослушивания</h1>
       </div>
